@@ -20,8 +20,9 @@ public class Menu {
 			System.out.println("********************* [2] - Cadastrar Livro");
 			System.out.println("********************* [3] - Usuários Cadastrados");
 			System.out.println("********************* [4] - Livros Cadastrados");
-			System.out.println("********************* [5] - Livros Emprestados");
-			System.out.println("********************* [6] - Sair");
+			System.out.println("********************* [5] - Realizar Empréstimos");
+			System.out.println("********************* [6] - Livros Emprestados");
+			System.out.println("********************* [7] - Sair");
 			System.out.println("-------------------------------------------");
 			System.out.println("/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/");
 			
@@ -31,22 +32,44 @@ public class Menu {
 				case 1:
 					user.addUser();
 					break;
+					
 				case 2:
 					book.addBook();
 					break;
+					
 				case 3:
 					PrintUsers.printUsers(user.users);
 					break;
+					
 				case 4:
 				    PrintBooks.printBooks(book.books);
 				    break;
+				    
 				case 5:
-					System.out.println("Feature in development");
-					break;
+					teclado.nextLine();
+				    System.out.print("Digite o nome do cliente: ");
+				    String clientName = teclado.nextLine();
+
+				    System.out.print("Digite o nome do livro: ");
+				    String bookName = teclado.nextLine();
+
+				    boolean loanSuccessful = Loan.makeLoan(clientName, bookName, user.users, book.books);
+
+				    if (!loanSuccessful) {
+				        System.out.println("Empréstimo não realizado.");
+				    }
+				    break;
+				    
 				case 6:
+				    LoanManager loanManager = new LoanManager();
+				    loanManager.printLoans();
+				    break;
+
+				case 7:
 					System.out.println("Tchauuu!!");
 					continuar = false;
 					break;
+					
 				default:
 					System.out.println("Opção inválida. Tente novamente.");
 					break;
