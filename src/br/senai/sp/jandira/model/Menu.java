@@ -29,17 +29,17 @@ public class Menu {
 			
 			switch (userOption) {
 				case 1:
-					user.UserRegister();
+					user.addUser();
 					break;
 				case 2:
-					book.Book();
+					book.addBook();
 					break;
 				case 3:
-					System.out.println("Feature in development");
+					PrintUsers.printUsers(user.users);
 					break;
 				case 4:
-					System.out.println("Feature in development");
-					break;
+				    PrintBooks.printBooks(book.books);
+				    break;
 				case 5:
 					System.out.println("Feature in development");
 					break;
