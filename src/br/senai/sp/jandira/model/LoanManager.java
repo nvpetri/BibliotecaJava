@@ -11,10 +11,6 @@ public class LoanManager {
         loans.add(loan);
     }
 
-    public void returnBook(Loan loan) {
-        loan.markAsReturned();
-    }
-
     public void printLoans() {
         System.out.println("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*");
         System.out.println("---------------- Empréstimos Ativos -------------------");
@@ -30,5 +26,4 @@ public class LoanManager {
             System.out.println("--------------------------------------------");
         }
     }
-
 }
