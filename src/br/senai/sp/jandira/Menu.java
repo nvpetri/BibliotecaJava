@@ -1,5 +1,9 @@
-package br.senai.sp.jandira.model;
+package br.senai.sp.jandira;
 
+import br.senai.sp.jandira.model.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -8,7 +12,8 @@ public class Menu {
 
     RegisterUser user = new RegisterUser();
     RegisterBook book = new RegisterBook();
-    LoanManager loanManager = new LoanManager();
+    List<Loan> loans = new ArrayList<>(); 
+    LoanManager loanManager = new LoanManager(loans);
 
     boolean continuar = true;
 
@@ -54,7 +59,7 @@ public class Menu {
                     System.out.print("Digite o nome do livro: ");
                     String bookName = teclado.nextLine();
 
-                    boolean loanSuccessful = Loan.makeLoan(clientName, bookName, user.users, book.books);
+                    boolean loanSuccessful = Loan.makeLoan(clientName, bookName, user.users, book.books, loans);
 
                     if (!loanSuccessful) {
                         System.out.println("Empréstimo não realizado.");
@@ -76,5 +81,4 @@ public class Menu {
             }
         }
     }
-
 }

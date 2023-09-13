@@ -29,7 +29,7 @@ public class Loan {
         isReturned = true;
     }
 
-    public static boolean makeLoan(String clientName, String bookName, List<User> users, List<Book> books) {
+    public static boolean makeLoan(String clientName, String bookName, List<User> users, List<Book> books, List<Loan> loans) {
         User selectedUser = null;
         for (User user : users) {
             if (user.name.equalsIgnoreCase(clientName)) {
@@ -56,7 +56,7 @@ public class Loan {
             return false;
         }
 
-        LoanManager loanManager = new LoanManager();
+        LoanManager loanManager = new LoanManager(loans);
         loanManager.lendBook(selectedUser, selectedBook);
         System.out.println("Empréstimo realizado com sucesso.");
         return true;

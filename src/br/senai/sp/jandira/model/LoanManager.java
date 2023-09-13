@@ -1,14 +1,22 @@
 package br.senai.sp.jandira.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LoanManager {
-    private List<Loan> loans = new ArrayList<>();
+	  public List<Loan> loans;
+
+	    public LoanManager(List<Loan> loans) {
+	        this.loans = loans;
+	    }
+	
 
     public void lendBook(User user, Book book) {
         Loan loan = new Loan(user, book);
         loans.add(loan);
+    }
+
+    public void returnBook(Loan loan) {
+        loan.markAsReturned();
     }
 
     public void printLoans() {
