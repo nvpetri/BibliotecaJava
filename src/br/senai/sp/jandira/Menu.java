@@ -28,7 +28,8 @@ public class Menu {
             System.out.println("********************* [4] - Livros Cadastrados");
             System.out.println("********************* [5] - Realizar Empréstimos");
             System.out.println("********************* [6] - Livros Emprestados");
-            System.out.println("********************* [7] - Sair");
+            System.out.println("********************* [7] - Devolução de Livros");
+            System.out.println("********************* [8] - Sair");
             System.out.println("-------------------------------------------");
             System.out.println("/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/");
 
@@ -71,6 +72,23 @@ public class Menu {
                     break;
 
                 case 7:
+                    teclado.nextLine();
+                    System.out.print("Digite o nome do cliente: ");
+                    String clientName1 = teclado.nextLine();
+
+                    System.out.print("Digite o nome do livro a ser devolvido: ");
+                    String bookName1 = teclado.nextLine();
+
+                    boolean returnSuccessful = Loan.returnLoan(clientName1, bookName1, loans);
+
+                    if (!returnSuccessful) {
+                        System.out.println("Devolução não realizada.");
+                    } else {
+                        System.out.println("Devolução realizada com sucesso.");
+                    }
+                    break;
+
+                case 8:
                     System.out.println("Tchauuu!!");
                     continuar = false;
                     break;

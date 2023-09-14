@@ -29,6 +29,24 @@ public class Loan {
         isReturned = true;
     }
 
+    public static boolean returnLoan(String clientName, String bookName, List<Loan> loans) {
+        for (Loan loan : loans) {
+            User user = loan.getUser();
+            Book book = loan.getBook();
+            if (user.name.equalsIgnoreCase(clientName) && book.name.equalsIgnoreCase(bookName)) {
+                if (!loan.isReturned()) {
+                    loan.markAsReturned();
+                    return true;
+                } else {
+                    System.out.println("Este livro já foi devolvido anteriormente.");
+                    return false;
+                }
+            }
+        }
+        System.out.println("Empréstimo não encontrado.");
+        return false;
+    }
+
     public static boolean makeLoan(String clientName, String bookName, List<User> users, List<Book> books, List<Loan> loans) {
         User selectedUser = null;
         for (User user : users) {
